@@ -1,0 +1,23 @@
+name: install-nginx
+on: [push, pull_request]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: install-docker
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          echo ---- Get the latest nginx docker image ---
+          sudo docker pull nginx
+          echo ---- Create the persistent data volume ---
+          sudo docker volume create nginx-data
+          echo ---- Run the nginx container exposing www ports and using the persitent data dir ---
+          sudo docker run -d --name nginx-server -p 80:80 -p 443:443 -v nginx-data:/usr/share/nginx/hmtl nginx
+          
