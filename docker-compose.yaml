@@ -1,6 +1,8 @@
 services:
   nginx:
-    image: nginx:latest
+    build:
+      context: https://github.com/FunkySheepStudio/Infra.git#:nginx	
+      dockerfile: Dockerfile
     ports:
       - "80:80"
       - "443:443"

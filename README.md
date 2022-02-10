@@ -12,6 +12,7 @@ Based on Github action, allow to build the company infrastructure from scratch o
         -   HOST
         -   USER
         -   PASSWORD
+        -   PORT
 
     -   Add a sudo configuration file to "/etc/sudoers.d/" for your devops user with the following no password settings:
 

@@ -26,4 +26,4 @@ jobs:
           echo ---- Update the apt repositories ---
           sudo apt-get update
           echo ---- install docker ---
-          sudo apt-get install --assume-yes docker-ce docker-ce-cli containerd.io
+          sudo apt-get install --assume-yes docker-ce docker-ce-cli containerd.io docker-compose
