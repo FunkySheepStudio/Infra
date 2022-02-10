@@ -27,3 +27,7 @@ jobs:
           sudo apt-get update
           echo ---- install docker ---
           sudo apt-get install --assume-yes docker-ce docker-ce-cli containerd.io docker-compose
+          echo ---- Get the docker config file ---
+          wget https://raw.githubusercontent.com/FunkySheepStudio/Infra/main/docker-compose.yaml
+          echo ---- Setting the docker infrastructure ----
+          sudo docker-compose up
