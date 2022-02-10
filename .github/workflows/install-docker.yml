@@ -1,0 +1,29 @@
+name: install-docker
+on: [push, pull_request]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          echo ---- Update the server ---
+          sudo apt-get update
+          sudo apt-get upgrade
+          echo ---- Install docker ---
+          echo ----  Add the required libraries ---
+          sudo apt-get install ca-certificates curl gnupg lsb-release
+          echo ---- Download the repositorie key ---
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+          echo ---- Add the apt docker config file to the server ---
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+          echo ---- Update the apt repositories ---
+          sudo apt-get update
+          echo ---- install docker ---
+          sudo apt-get install --assume-yes docker-ce docker-ce-cli containerd.io
