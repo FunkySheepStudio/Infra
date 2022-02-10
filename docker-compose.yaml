@@ -2,7 +2,7 @@ services:
   nginx:
     build:
       context: https://github.com/FunkySheepStudio/Infra.git#:nginx
-      dockerfile: Dockerfile
+      dockerfile: DockerFile
     ports:
       - "80:80"
       - "443:443"
