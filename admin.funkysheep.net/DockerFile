@@ -1,5 +1,5 @@
 FROM node:16.14
-WORKDIR /var/www/
+WORKDIR /var/www/admin.funkysheep.net
 COPY . .
 RUN npm install
 RUN npm run build
