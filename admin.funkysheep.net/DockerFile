@@ -1,6 +1,6 @@
 FROM node:16.14
-WORKDIR /var/www/admin.funkysheep.net
-COPY . .
+WORKDIR /var/www/
+COPY ./admin.funkysheep.net .
 RUN npm install
 RUN npm run build
 CMD npm start
