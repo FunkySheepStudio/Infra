@@ -11,3 +11,18 @@ services:
     ports:
       - "80"
       - "443"
+    networks:
+      - admin
+  admin-server:
+    depends_on:
+      - nginx
+    container_name: funkysheep-admin
+    build:
+      context: https://github.com/FunkySheepStudio/Infra.git#:admin.funkysheep.net
+      dockerfile: DockerFile
+    ports:
+      - "80"
+      - "443"
+    networks:
+      - admin
+
