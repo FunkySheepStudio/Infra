@@ -1,0 +1,23 @@
+name: install-certificates
+on:
+  workflow_run:
+      workflows: ["install-docker"]
+      branches: [master]
+      types: 
+        - completed
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          echo ---- Get all the domains certificates ---
+          sudo certbot certonly --standalone -d admin.funkysheep.net -m ${{ secrets.MAIL }} -n
+          sudo certbot certonly --standalone -d defize.funkysheep.net -m ${{ secrets.MAIL }} -n

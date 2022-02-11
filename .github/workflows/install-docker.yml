@@ -1,5 +1,10 @@
 name: install-docker
-on: [push, pull_request]
+on:
+  workflow_run:
+      workflows: ["install-certbot"]
+      branches: [master]
+      types: 
+        - completed
 jobs:
   build:
     name: Build
@@ -27,9 +32,7 @@ jobs:
           sudo apt-get update
           echo ---- install docker ---
           sudo apt-get install --assume-yes docker-ce docker-ce-cli containerd.io docker-compose
-          echo ---- Get the docker config file ---
-          wget https://raw.githubusercontent.com/FunkySheepStudio/Infra/master/docker-compose.yaml -O docker-compose.yaml
-          echo ---- Setting the docker infrastructure ----
-          sudo docker-compose up -d --build
-          echo ---- Remove the docker compose file ----
-          sudo rm docker-compose.yaml
+          echo ---- stop all docker containers ---
+          sudo docker stop $(docker ps -a -q)
+          echo ---- pruning all ---
+          sudo docker system prune -a -f

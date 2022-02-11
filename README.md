@@ -9,10 +9,11 @@ Based on Github action, allow to build the company infrastructure from scratch o
     -   Your devops user must be able to connect to SSH to the remote host.
 
     -   The following secrets entries must bu configured for the ssh connection to be established:
-        -   HOST
-        -   USER
-        -   PASSWORD
-        -   PORT
+        -   HOST -> The host to be configured
+        -   USER -> The user used ton configure the host
+        -   PASSWORD -> The user password
+        -   PORT -> The ssh port
+        -   MAIL -> The mail address used to certbot certificates
 
     -   Add a sudo configuration file to "/etc/sudoers.d/" for your devops user with the following no password settings:
 

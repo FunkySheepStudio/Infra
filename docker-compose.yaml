@@ -6,6 +6,8 @@ services:
     build:
       context: https://github.com/FunkySheepStudio/Infra.git#:nginx
       dockerfile: DockerFile
+    volumes:
+      - certificates:/etc/letsencrypt/live/:ro
     ports:
       - "80:80"
       - "443:443"
