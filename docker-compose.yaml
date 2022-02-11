@@ -2,6 +2,7 @@ version: "3"
 
 services:
   nginx:
+    container_name: nginx
     build:
       context: https://github.com/FunkySheepStudio/Infra.git#:nginx
       dockerfile: DockerFile
