@@ -2,7 +2,7 @@
 version: "3"
 
 networks:
-  admin:
+  everse:
 
 services:
   nginx:
@@ -16,14 +16,14 @@ services:
       - "8080:8080"
       - "443:443"
     networks:
-      - admin
+      - everse
     restart: always
-  admin-server:
+  everse-server:
     depends_on:
       - nginx
-    container_name: funkysheep-admin
+    container_name: funkysheep-everse
     build:
-      context: /var/www/admin.funkysheep.net/
+      context: /var/www/everse.funkysheep.net/
       dockerfile: DockerFile
     volumes:
       - /etc/letsencrypt/:/etc/letsencrypt/:ro
@@ -31,5 +31,5 @@ services:
       - "8080"
       - "443"
     networks:
-      - admin
+      - everse
     restart: always
