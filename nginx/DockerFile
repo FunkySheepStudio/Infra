@@ -1,2 +1,3 @@
 FROM nginx:latest
 ADD https://raw.githubusercontent.com/FunkySheepStudio/Infra/master/nginx/config/admin.funkysheep.net.conf /etc/nginx/conf.d/
+ADD https://raw.githubusercontent.com/FunkySheepStudio/Infra/master/nginx/config/everse.funkysheep.net.conf /etc/nginx/conf.d/
