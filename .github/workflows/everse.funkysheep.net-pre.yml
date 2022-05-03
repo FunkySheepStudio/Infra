@@ -1,4 +1,4 @@
-name: install-certbot
+name: everse-pre
 on: [push, pull_request]
 jobs:
   build:
@@ -13,8 +13,9 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          echo ---- Update the server ---
-          sudo apt-get update
-          sudo apt-get upgrade
-          echo ---- Install certbot ---
-          sudo apt-get -y install certbot
+          echo ---- Install GIT ---
+          sudo apt-get install git
+          echo ---- Remove the last repo ---
+          sudo rm -rf /var/www/everse.funkysheep.net
+          echo ---- Cloning the repository ---
+          sudo git clone https://github.com/FunkySheepStudio/everse-server.git /var/www/everse.funkysheep.net
