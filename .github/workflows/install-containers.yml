@@ -21,6 +21,6 @@ jobs:
           echo ---- Get the docker config file ---
           wget https://raw.githubusercontent.com/FunkySheepStudio/Infra/master/docker-compose.yaml -O docker-compose.yaml
           echo ---- Setting the docker infrastructure ----
-          sudo docker-compose up -d --build
+          sudo docker-compose up -d --build --remove-orphans
           echo ---- Remove the docker compose file ----
           sudo rm docker-compose.yaml
