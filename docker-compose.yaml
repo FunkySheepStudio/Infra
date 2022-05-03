@@ -1,4 +1,8 @@
+
 version: "3"
+
+networks:
+  admin:
 
 services:
   nginx:
@@ -7,7 +11,25 @@ services:
       context: https://github.com/FunkySheepStudio/Infra.git#:nginx
       dockerfile: DockerFile
     volumes:
-      - certificates:/etc/letsencrypt/live/:ro
+      - /etc/letsencrypt/:/etc/letsencrypt/:ro
     ports:
-      - "80"
+      - "8080:8080"
+      - "443:443"
+    networks:
+      - admin
+    restart: always
+  admin-server:
+    depends_on:
+      - nginx
+    container_name: funkysheep-admin
+    build:
+      context: /var/www/admin.funkysheep.net/
+      dockerfile: DockerFile
+    volumes:
+      - /etc/letsencrypt/:/etc/letsencrypt/:ro
+    ports:
+      - "8080"
       - "443"
+    networks:
+      - admin
+    restart: always

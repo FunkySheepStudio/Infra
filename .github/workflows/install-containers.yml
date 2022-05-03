@@ -1,8 +1,8 @@
 name: install-containers
 on:
   workflow_run:
-      workflows: ["install-certificates"]
-      branches: [master]
+      workflows: ["install-certificates", "admin-pre"]
+      branches: [master, main]
       types: 
         - completed
 jobs:
