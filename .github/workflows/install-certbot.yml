@@ -15,6 +15,6 @@ jobs:
         script: |
           echo ---- Update the server ---
           sudo apt-get update
-          sudo apt-get upgrade
+          sudo apt-get -y upgrade
           echo ---- Install certbot ---
           sudo apt-get -y install certbot
