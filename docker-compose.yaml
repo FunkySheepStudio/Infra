@@ -30,6 +30,7 @@ services:
     ports:
       - "8080"
       - "443"
+      - "7777:7777"
     networks:
       - everse
     restart: always
