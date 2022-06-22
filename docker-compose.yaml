@@ -30,7 +30,8 @@ services:
     ports:
       - "8080"
       - "443"
-      - "7777:7777"
+      - "7777:7777/tcp"
+      - "7777:7777/udp"
     networks:
       - everse
     restart: always
