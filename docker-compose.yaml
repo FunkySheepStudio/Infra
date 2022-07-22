@@ -35,3 +35,16 @@ services:
     networks:
       - everse
     restart: always
+  bitcoin-core:
+    container_name: bitcoin-core
+    build:
+      context: https://github.com/FunkySheepStudio/Infra.git#:bitcoin
+      dockerfile: DockerFile
+    volumes:
+      - /media/bitcoin/data:/var/bitcoin/data/
+    ports:
+      - "8333"
+    networks:
+      - everse
+    restart: always
+    
