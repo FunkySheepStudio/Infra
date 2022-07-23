@@ -33,6 +33,6 @@ jobs:
           echo ---- install docker ---
           sudo apt-get -y install --assume-yes docker-ce docker-ce-cli containerd.io docker-compose
           echo ---- stop all docker containers ---
-          sudo docker stop $(docker ps -a -q)
+          sudo docker stop $(sudo docker ps -a -q)
           echo ---- pruning all ---
           sudo docker system prune --volumes -a -f
