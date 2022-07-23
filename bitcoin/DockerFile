@@ -1,2 +1,2 @@
 FROM ruimarinho/bitcoin-core
-CMD ["/usr/bin/bitcoind", "-datadir=/var/bitcoin/data/", "--printtoconsole"]
+CMD ["bitcoind", "-datadir=/var/bitcoin/data/", "--printtoconsole"]
