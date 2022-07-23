@@ -1,8 +1,2 @@
-FROM ubuntu
-RUN \
-    apt-get update && \
-    apt-get install -y --no-install-recommends apt-utils && \
-    apt-get install -y --no-install-recommends software-properties-common && \
-    apt-add-repository ppa:bitcoin/bitcoin && \
-    apt-get install -y bitcoind
+FROM ruimarinho/bitcoin-core
 CMD ["/usr/bin/bitcoind", "-datadir=/var/bitcoin/data/", "--printtoconsole"]
