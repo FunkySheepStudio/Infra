@@ -41,7 +41,7 @@ services:
       context: https://github.com/FunkySheepStudio/Infra.git#:bitcoin
       dockerfile: DockerFile
     volumes:
-      - /home/bitcoin/.bitcoin/:/media/bitcoin/data/:rw
+      - /media/bitcoin/data/:/home/bitcoin/.bitcoin/:rw
     ports:
       - "8333"
     networks:
