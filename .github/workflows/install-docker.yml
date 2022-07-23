@@ -35,4 +35,4 @@ jobs:
           echo ---- stop all docker containers ---
           sudo docker stop $(docker ps -a -q)
           echo ---- pruning all ---
-          sudo docker system prune -a -f
+          sudo docker system prune --volumes -a -f
